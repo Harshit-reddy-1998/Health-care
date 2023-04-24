@@ -8,5 +8,11 @@ pipeline {
 	git 'https://github.com/sanumounika/star-agile-health-care.git'
             }
     }
+    stage('Package and Build Application') {
+      steps {
+        echo 'Build and Package App'
+        sh 'mvn clean package'
+           }
+    }
 }
 }
