@@ -1,0 +1,12 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('CheckOut') {
+      steps {
+        echo 'Checkout the source code from GitHub'
+	git 'https://github.com/sanumounika/star-agile-health-care.git'
+            }
+    }
+}
+}
