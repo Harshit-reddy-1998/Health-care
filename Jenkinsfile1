@@ -37,9 +37,13 @@ pipeline {
           sh 'docker push harshitreddy/health-care:latest'
               }
        }	
+       stage ('chmod key') {
+       	steps {
+		sh 'sudo chmod 600 harshit1.pem'
+	}
+       }
       stage ('Configure Test-server with Terraform'){
       steps {
-      	sh 'sudo chmod 600 harshit1.pem'
         dir('deployments'){
         sh 'terraform init'
         sh 'terraform validate'
