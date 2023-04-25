@@ -6,7 +6,7 @@ resource "aws_instance" "test-server" {
   connection {
     type     = "ssh"
     user     = "ubuntu"
-    private_key = file("./harshit1.pem")
+    private_key = file("harshit1.pem")
     host     = self.public_ip
   }
   provisioner "remote-exec" {
@@ -18,9 +18,6 @@ resource "aws_instance" "test-server" {
   provisioner "local-exec" {
         command = " echo ${aws_instance.test-server.public_ip} > inventory "
 		}
-# provisioner "local-exec" {
-  #      command = "sudo chmod 600 harshit1.pem "
-#		}
   provisioner "remote-exec" {
 	inline = [
         "sudo apt update -y",
@@ -33,7 +30,7 @@ resource "aws_instance" "test-server" {
              # "sudo microk8s enable dns ingress",
               "sudo microk8s status",
               "sudo microk8s kubectl create deployment health-deploy --image=harshitreddy/health-care:latest",
-              "sudo microk8s kubectl expose deployment health-deploy --port=8081 --type=NodePort",
+              "sudo microk8s kubectl expose deployment health-deploy --port=8082 --type=NodePort",
               "sudo microk8s kubectl get svc",
               "sudo echo Public IP Address of the Instance",
               "sudo curl http://checkip.amazonaws.com",
