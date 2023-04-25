@@ -44,7 +44,7 @@ pipeline {
       }
       stage ('Configure Test-server with Terraform'){
      	 steps {
-      		  dir('deployments') {
+      		  dir('/home/ubuntu/Health-care/deployments/') {
         			sh 'terraform init'
         			sh 'terraform validate'
       			  sh 'terraform apply --auto-approve'
