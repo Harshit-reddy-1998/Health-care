@@ -5,7 +5,7 @@ pipeline {
     stage('CheckOut') {
       steps {
         echo 'Checkout the source code from GitHub'
-	git 'https://github.com/sanumounika/star-agile-health-care.git'
+	git 'https://github.com/Harshit-reddy-1998/Health-care.git'
             }
     }
     stage('Package and Build Application') {
