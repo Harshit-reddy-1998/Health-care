@@ -40,7 +40,7 @@ pipeline {
       stage ('Configure Test-server with Terraform'){
       steps {
         dir('deployments'){
-        sh 'sudo chmod 600 harshit1.pem'
+        sh 'sudo chmod 600 /home/user/documents/harshit1.pem'
         sh 'terraform init'
         sh 'terraform validate'
         sh 'terraform apply --auto-approve'
