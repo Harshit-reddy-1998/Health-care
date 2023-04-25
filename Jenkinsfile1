@@ -39,16 +39,15 @@ pipeline {
        }	
        stage ('chmod key') {
        	steps {
-		sh 'sudo chmod 400 /home/ubuntu/Health-care/deployments/harshit1.pem'
+		sh 'sudo chmod 400 /home/ubuntu/Health-care/harshit1.pem'
 	}
       }
       stage ('Configure Test-server with Terraform'){
      	 steps {
-      		  dir('/home/ubuntu/Health-care/deployments/') {
         			sh 'terraform init'
         			sh 'terraform validate'
       			  sh 'terraform apply --auto-approve'
-                }
+               
           }   
        }
 }
